@@ -6,6 +6,7 @@ import PieChart from '@/components/molecules/PieChart';
 import StackedColumnChart from '@/components/molecules/StackedColumnChart';
 import { dashboardCards, locationWiseAssetsData, assetsPerCampusData } from '@/app/dummyJson/dummyJson';
 import { CheckCircle2, Archive, Settings, Wrench } from 'lucide-react';
+import DemoTable from '@/components/Table/Table';
 
 const iconMap = {
   CheckCircle2: CheckCircle2,
@@ -52,6 +53,7 @@ export default function DashboardPage() {
           dropdownLabel="Campus(If Applicable):"
         />
       </div>
+      <DemoTable/>
     </div>
   );
 }

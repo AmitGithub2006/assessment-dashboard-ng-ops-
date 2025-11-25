@@ -29,7 +29,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 bg-white border-r border-gray-200 h-screen fixed left-0 top-16">
+    <aside className="w-64 bg-white border-r border-gray-200 shrink-0 overflow-y-auto">
       <nav className="p-4">
         <ul className="space-y-1">
           {menuItems.map((item) => {

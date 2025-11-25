@@ -35,3 +35,29 @@ export const assetsPerCampusData = [
   ['Satlapur', 75, 0, 15, 240, 0],
   ['Udaipur', 175, 0, 0, 25, 0],
 ];
+
+export const assetsTableData = [
+  { id: 1, assetId: 'AST-001', name: 'Dell Laptop', category: 'Computer', status: 'Active', location: 'Campus', assignedTo: 'John Doe', purchaseDate: '2023-01-15' },
+  { id: 2, assetId: 'AST-002', name: 'HP Monitor', category: 'Display', status: 'Active', location: 'Campus', assignedTo: 'Jane Smith', purchaseDate: '2023-02-20' },
+  { id: 3, assetId: 'AST-003', name: 'Logitech Mouse', category: 'Peripheral', status: 'In Storage', location: 'Remote', assignedTo: 'Unassigned', purchaseDate: '2023-03-10' },
+  { id: 4, assetId: 'AST-004', name: 'MacBook Pro', category: 'Computer', status: 'Active', location: 'Campus', assignedTo: 'Robert Brown', purchaseDate: '2023-01-25' },
+  { id: 5, assetId: 'AST-005', name: 'Samsung Printer', category: 'Printer', status: 'Needs Repair', location: 'Campus', assignedTo: 'Unassigned', purchaseDate: '2022-11-05' },
+  { id: 6, assetId: 'AST-006', name: 'iPad Pro', category: 'Tablet', status: 'Active', location: 'Remote', assignedTo: 'Sarah Wilson', purchaseDate: '2023-04-12' },
+  { id: 7, assetId: 'AST-007', name: 'Wireless Keyboard', category: 'Peripheral', status: 'In Repair', location: 'Campus', assignedTo: 'Unassigned', purchaseDate: '2023-02-28' },
+  { id: 8, assetId: 'AST-008', name: 'Canon Camera', category: 'Camera', status: 'Active', location: 'Campus', assignedTo: 'Michael Davis', purchaseDate: '2023-05-01' },
+  { id: 9, assetId: 'AST-009', name: 'Projector', category: 'Display', status: 'In Storage', location: 'Campus', assignedTo: 'Unassigned', purchaseDate: '2022-12-15' },
+  { id: 10, assetId: 'AST-010', name: 'Dell Desktop', category: 'Computer', status: 'Active', location: 'Campus', assignedTo: 'Emily Johnson', purchaseDate: '2023-03-20' },
+];
+
+export const ticketsTableData = [
+  { id: 1, ticketId: 'TKT-SARJ-251119-R-001', type: 'Repair', sla: '02h', slaStatus: 'critical', status: 'IN PROGRESS' },
+  { id: 2, ticketId: 'TKT-PUNE-251119-C-002', type: 'Change', sla: '11h', slaStatus: 'normal', status: 'ESCALATED' },
+  { id: 3, ticketId: 'TKT-HIMA-241119-D-001', type: 'Dispute', sla: '19h', slaStatus: 'normal', status: 'OPEN' },
+  { id: 4, ticketId: 'TKT-JASH-231119-N-004', type: 'New', sla: '28h', slaStatus: 'normal', status: 'PENDING APPROVAL' },
+  { id: 5, ticketId: 'TKT-DANT-221119-R-005', type: 'Repair', sla: '05h', slaStatus: 'warning', status: 'IN PROGRESS' },
+  { id: 6, ticketId: 'TKT-UDAI-201119-C-006', type: 'Change', sla: '15h', slaStatus: 'normal', status: 'OPEN' },
+  { id: 7, ticketId: 'TKT-RAIP-191119-D-007', type: 'Dispute', sla: '32h', slaStatus: 'normal', status: 'PENDING APPROVAL' },
+  { id: 8, ticketId: 'TKT-AMAR-181119-N-008', type: 'New', sla: '01h', slaStatus: 'critical', status: 'ESCALATED' },
+  { id: 9, ticketId: 'TKT-JABA-171119-R-009', type: 'Repair', sla: '08h', slaStatus: 'warning', status: 'IN PROGRESS' },
+  { id: 10, ticketId: 'TKT-DHAR-161119-C-010', type: 'Change', sla: '24h', slaStatus: 'normal', status: 'OPEN' },
+];
