@@ -61,3 +61,16 @@ export const ticketsTableData = [
   { id: 9, ticketId: 'TKT-JABA-171119-R-009', type: 'Repair', sla: '08h', slaStatus: 'warning', status: 'IN PROGRESS' },
   { id: 10, ticketId: 'TKT-DHAR-161119-C-010', type: 'Change', sla: '24h', slaStatus: 'normal', status: 'OPEN' },
 ];
+
+export const assetsPageData = [
+  { id: 1, assetTag: 'NG-SARJ-L-0315', type: 'Laptop', campus: 'Sarjapura', status: 'Repair', location: 'Vendor: TechCare', actions: 'View' },
+  { id: 2, assetTag: 'NG-PUNE-L-0210', type: 'Laptop', campus: 'Pune', status: 'Allocated', location: 'Student: Meena', actions: 'View' },
+  { id: 3, assetTag: 'NG-HIMA-L-0144', type: 'Laptop', campus: 'Himachal', status: 'In Stock', location: 'Store Room', actions: 'Assign' },
+  { id: 4, assetTag: 'NG-DANT-L-0029', type: 'Laptop', campus: 'Dantewada', status: 'Scrap', location: 'Scrap Room', actions: 'Details' },
+  { id: 5, assetTag: 'NG-JABA-L-0421', type: 'Laptop', campus: 'Jabalpur', status: 'Allocated', location: 'Student: Rahul', actions: 'View' },
+  { id: 6, assetTag: 'NG-UDAI-L-0156', type: 'Laptop', campus: 'Udaipur', status: 'In Stock', location: 'Store Room', actions: 'Assign' },
+  { id: 7, assetTag: 'NG-RAIP-L-0087', type: 'Laptop', campus: 'Raipur', status: 'Repair', location: 'Vendor: FixIT', actions: 'View' },
+  { id: 8, assetTag: 'NG-AMAR-L-0298', type: 'Laptop', campus: 'Amaravati', status: 'Allocated', location: 'Student: Priya', actions: 'View' },
+  { id: 9, assetTag: 'NG-DHAR-L-0112', type: 'Laptop', campus: 'Dharamshala', status: 'In Stock', location: 'Store Room', actions: 'Assign' },
+  { id: 10, assetTag: 'NG-KISH-L-0045', type: 'Laptop', campus: 'Kishangarh', status: 'Scrap', location: 'Scrap Room', actions: 'Details' },
+];

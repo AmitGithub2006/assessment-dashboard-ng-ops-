@@ -24,7 +24,7 @@ function RootLayout({ children }) {
             <Header />
             <div className="flex flex-1 overflow-hidden">
               <Sidebar />
-              <main className="flex overflow-y-hidden">
+              <main className="w-full max-h-screen overflow-hidden">
                 {children}
               </main>
             </div>
