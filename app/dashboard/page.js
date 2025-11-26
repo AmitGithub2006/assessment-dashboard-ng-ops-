@@ -49,24 +49,28 @@ export default function DashboardPage() {
       </div>
 
       {/* Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <PieChart 
-          data={locationWiseAssetsData}
-          title="Location wise Assets"
-          colors={['#93C5FD', '#5EEAD4']}
-          height="500px"
-        />
-        <StackedColumnChart 
-          data={assetsPerCampusData}
-          title="Assets - per Campus"
-          colors={['#60A5FA', '#93C5FD', '#FCA5A5', '#FCD34D', '#FB923C', '#A78BFA', '#34D399', '#FBBF24', '#F87171', '#818CF8', '#10B981']}
-          height="500px"
-          hAxisTitle="Campus(If Applicable)"
-          vAxisTitle="Campus(If Applicable) Count"
-          showDropdown={true}
-          dropdownLabel="Campus(If Applicable):"
-          showLegendLabels={legendLabels}
-        />
+      <div className="grid grid-cols-1 lg:grid-cols-10 gap-6">
+        <div className="lg:col-span-7">
+          <StackedColumnChart 
+            data={assetsPerCampusData}
+            title="Assets - per Campus"
+            colors={['#4F46E5', '#7C3AED', '#EC4899', '#F59E0B', '#10B981', '#3B82F6', '#8B5CF6', '#EF4444', '#F97316', '#06B6D4', '#14B8A6']}
+            height="500px"
+            hAxisTitle="Campus(If Applicable)"
+            vAxisTitle="Campus(If Applicable) Count"
+            showDropdown={true}
+            dropdownLabel="Campus(If Applicable):"
+            showLegendLabels={legendLabels}
+          />
+        </div>
+        <div className="lg:col-span-3">
+          <PieChart 
+            data={locationWiseAssetsData}
+            title="Location wise Assets"
+            colors={['#93C5FD', '#5EEAD4']}
+            height="500px"
+          />
+        </div>
       </div>
       <DemoTable/>
     </div>

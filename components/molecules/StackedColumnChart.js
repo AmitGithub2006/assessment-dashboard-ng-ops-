@@ -32,9 +32,10 @@ const StackedColumnChart = ({
       fontName: 'Poppins'
     },
     chartArea: { 
-      width: '80%',
+      width: '70%',
       height: '60%',
-      top: 100
+      top: 100,
+      left: 80
     },
     isStacked: true,
     colors: colors,
@@ -72,11 +73,12 @@ const StackedColumnChart = ({
       alignment: 'start',
       textStyle: {
         fontName: 'Poppins',
-        fontSize: 11
-      }
+        fontSize: 10
+      },
+      maxLines: 2
     },
     backgroundColor: 'transparent',
-    bar: { groupWidth: '70%' }
+    bar: { groupWidth: '85%' }
   };
 
   return (
