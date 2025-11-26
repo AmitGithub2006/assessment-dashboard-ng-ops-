@@ -8,12 +8,21 @@ const StackedColumnChart = ({
   title = "Column Chart", 
   width = "100%", 
   height = "500px",
-  colors = ['#60A5FA', '#93C5FD', '#FCA5A5', '#FCD34D', '#FB923C'],
+  colors = ['#60A5FA', '#93C5FD', '#FCA5A5', '#FCD34D', '#FB923C', '#A78BFA', '#34D399', '#FBBF24', '#F87171', '#818CF8', '#10B981'],
   hAxisTitle = "",
   vAxisTitle = "",
   showDropdown = false,
-  dropdownLabel = ""
+  dropdownLabel = "",
+  showLegendLabels = {}
 }) => {
+  // Transform data to show full legend labels
+  const transformedData = data.map((row, index) => {
+    if (index === 0 && Object.keys(showLegendLabels).length > 0) {
+      return row.map((col) => showLegendLabels[col] || col);
+    }
+    return row;
+  });
+
   const options = {
     title: title,
     titleTextStyle: {
@@ -85,7 +94,7 @@ const StackedColumnChart = ({
       </div>
       <Chart
         chartType="ColumnChart"
-        data={data}
+        data={transformedData}
         options={options}
         width={width}
         height={height}

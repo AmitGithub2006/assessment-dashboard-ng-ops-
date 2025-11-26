@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Search } from 'lucide-react';
+import { Search, Eye, UserPlus, FileText } from 'lucide-react';
 import TableWrapper from '@/components/Table/TableWrapper';
 import { assetsPageData } from '@/app/dummyJson/dummyJson';
 
@@ -34,14 +34,20 @@ export default function AssetsPage() {
           </span>
         );
       case "actions":
+        const actionIcons = {
+          'View': <Eye className="w-4 h-4" />,
+          'Assign': <UserPlus className="w-4 h-4" />,
+          'Details': <FileText className="w-4 h-4" />,
+        };
         const actionColors = {
           'View': 'text-blue-600 hover:text-blue-800',
           'Assign': 'text-green-600 hover:text-green-800',
           'Details': 'text-gray-600 hover:text-gray-800',
         };
         return (
-          <button className={`font-medium underline ${actionColors[cellValue] || 'text-blue-600 hover:text-blue-800'}`}>
-            [{cellValue}]
+          <button className={`flex items-center gap-1 font-medium ${actionColors[cellValue] || 'text-blue-600 hover:text-blue-800'}`}>
+            {actionIcons[cellValue]}
+            <span>{cellValue}</span>
           </button>
         );
       default:

@@ -23,17 +23,17 @@ export const locationWiseAssetsData = [
 ];
 
 export const assetsPerCampusData = [
-  ['Campus', 'Active', 'Decommission', 'In Repair', 'In Storage', 'Needs Repair'],
-  ['Amaravati', 75, 0, 10, 15, 0],
-  ['Dantewada', 65, 20, 5, 60, 0],
-  ['Dharamshala', 45, 60, 10, 15, 0],
-  ['Himachal Pradesh', 0, 0, 0, 0, 0],
-  ['Jabalpur', 90, 0, 10, 45, 0],
-  ['Kishangarh', 10, 0, 0, 5, 0],
-  ['Pune', 110, 0, 20, 70, 0],
-  ['Raipur', 130, 0, 5, 65, 0],
-  ['Satlapur', 75, 0, 15, 240, 0],
-  ['Udaipur', 175, 0, 0, 25, 0],
+  ['Campus', 'LWS', 'LIS', 'LR', 'LNW', 'LWFHE', 'LCT', 'LASLFH', 'LSD', 'LB', 'LSJOP', 'LNGIN'],
+  ['Amaravati', 45, 30, 15, 10, 2, 3, 1, 5, 4, 2, 1],
+  ['Dantewada', 38, 25, 20, 12, 1, 2, 0, 3, 2, 1, 1],
+  ['Dharamshala', 42, 28, 18, 8, 3, 4, 2, 6, 5, 1, 0],
+  ['Himachal Pradesh', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ['Jabalpur', 50, 35, 22, 15, 2, 5, 1, 4, 3, 2, 1],
+  ['Kishangarh', 12, 8, 5, 3, 0, 1, 0, 1, 1, 0, 0],
+  ['Pune', 55, 40, 25, 18, 4, 6, 3, 8, 6, 3, 2],
+  ['Raipur', 58, 38, 20, 14, 3, 4, 2, 5, 4, 2, 1],
+  ['Satlapur', 40, 30, 28, 20, 2, 3, 1, 4, 3, 1, 1],
+  ['Udaipur', 60, 45, 18, 12, 3, 5, 2, 7, 5, 2, 1],
 ];
 
 export const assetsTableData = [

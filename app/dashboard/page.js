@@ -16,6 +16,20 @@ const iconMap = {
 };
 
 export default function DashboardPage() {
+  const legendLabels = {
+    'LWS': 'Laptops with Students',
+    'LIS': 'Laptops in Stock',
+    'LR': 'Laptops Repairable',
+    'LNW': 'Non-Working Laptops',
+    'LWFHE': 'Laptops with Work-from-Home Employees',
+    'LCT': 'Laptops with Campus Team',
+    'LASLFH': 'Laptops with Amaravati Students Learning from Home',
+    'LSD': 'Laptops with Security Deposit',
+    'LB': 'Laptops with Bond',
+    'LSJOP': 'Laptops for Student Job Observation Period',
+    'LNGIN': 'Laptops with NG Interns'
+  };
+
   return (
     <div className="p-6 h-full overflow-y-auto"> 
       {/* Dashboard Cards */}
@@ -45,12 +59,13 @@ export default function DashboardPage() {
         <StackedColumnChart 
           data={assetsPerCampusData}
           title="Assets - per Campus"
-          colors={['#60A5FA', '#93C5FD', '#FCA5A5', '#FCD34D', '#FB923C']}
+          colors={['#60A5FA', '#93C5FD', '#FCA5A5', '#FCD34D', '#FB923C', '#A78BFA', '#34D399', '#FBBF24', '#F87171', '#818CF8', '#10B981']}
           height="500px"
-          hAxisTitle="Campus"
-          vAxisTitle="Campus Count"
+          hAxisTitle="Campus(If Applicable)"
+          vAxisTitle="Campus(If Applicable) Count"
           showDropdown={true}
-          dropdownLabel="Campus:"
+          dropdownLabel="Campus(If Applicable):"
+          showLegendLabels={legendLabels}
         />
       </div>
       <DemoTable/>

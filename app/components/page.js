@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Trash2, Download, FileText } from 'lucide-react';
 import TableWrapper from '@/components/Table/TableWrapper';
 import { componentsPageData } from '@/app/dummyJson/dummyJson';
 
@@ -31,14 +32,20 @@ export default function ComponentsPage() {
           </span>
         );
       case "action":
+        const actionIcons = {
+          'Remove': <Trash2 className="w-4 h-4" />,
+          'Install': <Download className="w-4 h-4" />,
+          'Details': <FileText className="w-4 h-4" />,
+        };
         const actionColors = {
           'Remove': 'text-red-600 hover:text-red-800',
           'Install': 'text-green-600 hover:text-green-800',
           'Details': 'text-gray-600 hover:text-gray-800',
         };
         return (
-          <button className={`font-medium underline ${actionColors[cellValue] || 'text-blue-600 hover:text-blue-800'}`}>
-            [{cellValue}]
+          <button className={`flex items-center gap-1 font-medium ${actionColors[cellValue] || 'text-blue-600 hover:text-blue-800'}`}>
+            {actionIcons[cellValue]}
+            <span>{cellValue}</span>
           </button>
         );
       case "installedOn":
