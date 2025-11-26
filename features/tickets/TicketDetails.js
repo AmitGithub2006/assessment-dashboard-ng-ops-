@@ -14,7 +14,12 @@ export default function TicketDetails({ ticketId, onBack }) {
     );
   }
 
-  const infoSections = [
+  // Left column sections (30%) - Smaller information cards
+  const leftSections = [
+    {
+      title: 'STATUS TIMELINE',
+      timeline: ticketDetails.timeline,
+    },
     {
       title: 'DEVICE SUMMARY',
       items: [
@@ -32,11 +37,21 @@ export default function TicketDetails({ ticketId, onBack }) {
     },
   ];
 
-  const actions = [
-    { label: 'Add Update', variant: 'default', onClick: () => console.log('Add Update') },
-    { label: 'Escalate', variant: 'danger', onClick: () => console.log('Escalate') },
-    { label: 'Resolve', variant: 'success', onClick: () => console.log('Resolve') },
-    { label: 'Close Ticket', variant: 'primary', onClick: () => console.log('Close') },
+  // Right column sections (70%) - Larger content cards
+  const rightSections = [
+    {
+      title: 'NOTES / UPDATES LOG (editable thread)',
+      logEntries: ticketDetails.logEntries,
+    },
+    {
+      title: 'ACTIONS',
+      actions: [
+        { label: 'Add Update', variant: 'default', onClick: () => console.log('Add Update') },
+        { label: 'Escalate', variant: 'danger', onClick: () => console.log('Escalate') },
+        { label: 'Resolve', variant: 'success', onClick: () => console.log('Resolve') },
+        { label: 'Close Ticket', variant: 'primary', onClick: () => console.log('Close') },
+      ],
+    },
   ];
 
   const getSlaColor = () => {
@@ -50,15 +65,8 @@ export default function TicketDetails({ ticketId, onBack }) {
       title={`Ticket: ${ticketDetails.ticketId}`}
       subtitle={`SLA COUNTDOWN: ${ticketDetails.sla} Remaining (${ticketDetails.slaStatus.toUpperCase()})`}
       subtitleColor={getSlaColor()}
-      timeline={ticketDetails.timeline}
-      infoSections={infoSections}
-      logEntries={ticketDetails.logEntries}
-      logTitle="NOTES / UPDATES LOG (editable thread)"
-      actions={actions}
-      showTimeline={true}
-      showInfoSections={true}
-      showLog={true}
-      showActions={true}
+      leftSections={leftSections}
+      rightSections={rightSections}
       onBack={onBack}
     />
   );
