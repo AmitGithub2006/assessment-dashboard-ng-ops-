@@ -236,4 +236,132 @@ export const assetDetailsData = {
       { date: '20 Aug', event: 'Purchased and added to inventory' },
     ],
   },
+/**
+ * MODAL CONFIGURATIONS
+ * Each modal type has a configuration object defining which fields to display
+ * Fields can be toggled on/off by adding/removing from the array
+ */
+
+export const allocationModalConfig = {
+  id: 'allocation-modal',
+  title: '🔧 Allocation Modal',
+  subtitle: 'Assign Asset to User',
+  fields: [
+    {
+      id: 'asset_tag',
+      type: 'display',
+      label: 'Assign Asset',
+      displayValue: 'NG-SARJ-L-0210',
+      description: 'The asset to be assigned',
+    },
+    {
+      id: 'user_search',
+      type: 'search',
+      label: 'Select User',
+      placeholder: 'Search Student: Suresh Kumar',
+      description: 'Search and select the user to assign this asset to',
+    },
+    {
+      id: 'reason',
+      type: 'select',
+      label: 'Reason',
+      options: [
+        { value: 'replacement', label: 'Replacement ▼' },
+        { value: 'new_allocation', label: 'New Allocation' },
+        { value: 'repair', label: 'Repair' },
+      ],
+      placeholder: 'Select reason',
+    },
+    {
+      id: 'preview',
+      type: 'display',
+      label: 'Preview',
+      displayValue: 'Current Owner: Meena → New Owner: Suresh, Location change: WITH_USER(Meena) → WITH_USER(Suresh)',
+      description: 'Review the changes before confirming',
+    },
+  ],
+  actionButtons: [
+    { id: 'cancel', label: 'Cancel', variant: 'secondary' },
+    { id: 'confirm', label: 'Confirm Assign', variant: 'primary' },
+  ],
+};
+
+export const componentInstallModalConfig = {
+  id: 'component-install-modal',
+  title: '⚙️ Component Action Modal — install',
+  subtitle: 'Install Component on Device',
+  fields: [
+    {
+      id: 'component_tag',
+      type: 'display',
+      label: 'Install Component',
+      displayValue: 'RAM-SARJ-8GB-2311-01',
+      description: 'The component to be installed',
+    },
+    {
+      id: 'device_search',
+      type: 'search',
+      label: 'Select Device',
+      placeholder: 'Search: Lenovo T480 / NG-PUNE-L-0210',
+      description: 'Find and select the device to install component on',
+    },
+    {
+      id: 'slot',
+      type: 'select',
+      label: 'Slot',
+      options: [
+        { value: 'slot_a', label: 'Slot A ▼' },
+        { value: 'slot_b', label: 'Slot B' },
+        { value: 'slot_c', label: 'Slot C' },
+      ],
+      placeholder: 'Select Slot',
+    },
+    {
+      id: 'notes',
+      type: 'textarea',
+      label: 'Notes',
+      placeholder: 'Add any additional notes here...',
+    },
+  ],
+  actionButtons: [
+    { id: 'cancel', label: 'Cancel', variant: 'secondary' },
+    { id: 'install', label: 'Install Component', variant: 'primary' },
+  ],
+};
+
+export const componentStripModalConfig = {
+  id: 'component-strip-modal',
+  title: '🔌 Component Action Modal — strip from laptop',
+  subtitle: 'Remove Component from Device',
+  fields: [
+    {
+      id: 'component_to_remove',
+      type: 'display',
+      label: 'Remove Component',
+      displayValue: 'RAM 8GB from NG-SARJ-L-0315',
+      description: 'The component to be removed',
+    },
+    {
+      id: 'removal_reason',
+      type: 'select',
+      label: 'Reason',
+      options: [
+        { value: 'reuse', label: 'Reuse' },
+        { value: 'replace', label: 'Replace' },
+        { value: 'scrap', label: 'Scrap ▼' },
+      ],
+      placeholder: 'Select reason',
+    },
+    {
+      id: 'new_status',
+      type: 'display',
+      label: 'New Status After Removal',
+      displayValue: 'In Stock',
+      description: 'The status of the component after removal',
+    },
+  ],
+  actionButtons: [
+    { id: 'confirm_removal', label: 'Confirm Removal', variant: 'danger' },
+    { id: 'cancel', label: 'Cancel', variant: 'secondary' },
+  ],
 };
