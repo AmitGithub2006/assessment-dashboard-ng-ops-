@@ -25,7 +25,7 @@ import { ChevronDown } from 'lucide-react';
  *   displayValue?: string (for display type - shows value without input)
  * }
  */
-const FieldRenderer = ({ fields = [], values = {}, onChange = () => {} }) => {
+const FieldRenderer = ({ fields = [], values = {}, onChange = () => {}, errors = {}, touched = {}, onFieldBlur = () => {} }) => {
   const handleChange = (fieldId, value) => {
     onChange({ ...values, [fieldId]: value });
   };
@@ -33,6 +33,7 @@ const FieldRenderer = ({ fields = [], values = {}, onChange = () => {} }) => {
   const renderField = (field) => {
     const { id, type, label, placeholder, value, options = [], description, className = '', displayValue } = field;
     const currentValue = values[id] ?? value ?? '';
+    const hasError = touched[id] && errors[id];
 
     switch (type) {
       case 'text':
@@ -47,11 +48,15 @@ const FieldRenderer = ({ fields = [], values = {}, onChange = () => {} }) => {
               type="text"
               value={currentValue}
               onChange={(e) => handleChange(id, e.target.value)}
+              onBlur={() => onFieldBlur(id)}
               placeholder={placeholder}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+              className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition ${hasError ? 'border-red-500' : 'border-gray-300'}`}
             />
             {description && (
               <p className="text-xs text-gray-500 mt-1">{description}</p>
+            )}
+            {hasError && (
+              <p className="text-xs text-red-600 mt-1">{errors[id]}</p>
             )}
           </div>
         );
@@ -69,8 +74,9 @@ const FieldRenderer = ({ fields = [], values = {}, onChange = () => {} }) => {
                 type="text"
                 value={currentValue}
                 onChange={(e) => handleChange(id, e.target.value)}
+                onBlur={() => onFieldBlur(id)}
                 placeholder={placeholder}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition ${hasError ? 'border-red-500' : 'border-gray-300'}`}
               />
               <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
                 🔍
@@ -78,6 +84,9 @@ const FieldRenderer = ({ fields = [], values = {}, onChange = () => {} }) => {
             </div>
             {description && (
               <p className="text-xs text-gray-500 mt-1">{description}</p>
+            )}
+            {hasError && (
+              <p className="text-xs text-red-600 mt-1">{errors[id]}</p>
             )}
           </div>
         );
@@ -94,7 +103,8 @@ const FieldRenderer = ({ fields = [], values = {}, onChange = () => {} }) => {
               <select
                 value={currentValue}
                 onChange={(e) => handleChange(id, e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition appearance-none bg-white cursor-pointer"
+                onBlur={() => onFieldBlur(id)}
+                className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition appearance-none bg-white cursor-pointer ${hasError ? 'border-red-500' : 'border-gray-300'}`}
               >
                 <option value="">{placeholder || 'Select option'}</option>
                 {options.map((option) => (
@@ -107,6 +117,9 @@ const FieldRenderer = ({ fields = [], values = {}, onChange = () => {} }) => {
             </div>
             {description && (
               <p className="text-xs text-gray-500 mt-1">{description}</p>
+            )}
+            {hasError && (
+              <p className="text-xs text-red-600 mt-1">{errors[id]}</p>
             )}
           </div>
         );
@@ -122,12 +135,16 @@ const FieldRenderer = ({ fields = [], values = {}, onChange = () => {} }) => {
             <textarea
               value={currentValue}
               onChange={(e) => handleChange(id, e.target.value)}
+              onBlur={() => onFieldBlur(id)}
               placeholder={placeholder}
               rows={3}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition resize-none"
+              className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition resize-none ${hasError ? 'border-red-500' : 'border-gray-300'}`}
             />
             {description && (
               <p className="text-xs text-gray-500 mt-1">{description}</p>
+            )}
+            {hasError && (
+              <p className="text-xs text-red-600 mt-1">{errors[id]}</p>
             )}
           </div>
         );

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import Modal from './Modal';
 import FieldRenderer from './FieldRenderer';
 
@@ -24,6 +24,7 @@ const GenericModalWrapper = ({
   maxWidth = 'max-w-2xl',
 }) => {
   const [formValues, setFormValues] = useState({});
+  const [touched, setTouched] = useState({});
 
   if (!config.id) {
     return null;
@@ -38,10 +39,66 @@ const GenericModalWrapper = ({
 
   const handleClose = () => {
     setFormValues({});
+    setTouched({});
     onClose();
   };
 
+  const computeErrors = (fieldsList, values) => {
+    const errs = {};
+    fieldsList.forEach((f) => {
+      if (['text', 'search', 'select', 'textarea'].includes(f.type)) {
+        const vRaw = values[f.id] ?? '';
+        const v = typeof vRaw === 'string' ? vRaw.trim() : vRaw;
+
+        if (f.required) {
+          const empty = f.type === 'select' ? v === '' : v === '';
+          if (empty) {
+            errs[f.id] = typeof f.required === 'string' ? f.required : 'This field is required';
+            return;
+          }
+        }
+
+        if (typeof f.minLength === 'number' && String(v).length < f.minLength && v !== '') {
+          errs[f.id] = `Minimum length is ${f.minLength}`;
+          return;
+        }
+
+        if (typeof f.maxLength === 'number' && String(v).length > f.maxLength) {
+          errs[f.id] = `Maximum length is ${f.maxLength}`;
+          return;
+        }
+
+        if (f.pattern) {
+          try {
+            const re = new RegExp(f.pattern);
+            if (!re.test(String(v))) {
+              errs[f.id] = 'Invalid format';
+              return;
+            }
+          } catch (_) {
+            // ignore invalid pattern
+          }
+        }
+      }
+    });
+    return errs;
+  };
+
+  const errors = useMemo(() => computeErrors(fields, formValues), [fields, formValues]);
+  const hasErrors = Object.keys(errors).length > 0;
+
   const handleAction = (actionId) => {
+    const primaryOrDanger = actionButtons.some((b) => b.id === actionId && (b.variant === 'primary' || b.variant === 'danger' || !b.variant));
+    if (primaryOrDanger && hasErrors) {
+      const allTouched = {};
+      fields.forEach((f) => {
+        if (['text', 'search', 'select', 'textarea'].includes(f.type)) {
+          allTouched[f.id] = true;
+        }
+      });
+      setTouched(allTouched);
+      return;
+    }
     onAction(actionId, formValues);
   };
 
@@ -81,7 +138,8 @@ const GenericModalWrapper = ({
                 <button
                   key={btn.id}
                   onClick={() => handleAction(btn.id)}
-                  className={`${baseClass} ${variantClass}`}
+                  disabled={(btn.variant === 'primary' || btn.variant === 'danger' || !btn.variant) && hasErrors}
+                  className={`${baseClass} ${variantClass} ${((btn.variant === 'primary' || btn.variant === 'danger' || !btn.variant) && hasErrors) ? 'opacity-60 cursor-not-allowed' : ''}`}
                 >
                   {btn.label}
                 </button>
@@ -106,6 +164,9 @@ const GenericModalWrapper = ({
           fields={fields}
           values={formValues}
           onChange={setFormValues}
+          errors={errors}
+          touched={touched}
+          onFieldBlur={(id) => setTouched({ ...touched, [id]: true })}
         />
       }
       footer={renderFooter()}

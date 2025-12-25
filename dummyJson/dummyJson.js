@@ -262,6 +262,8 @@ export const allocationModalConfig = {
       label: 'Select User',
       placeholder: 'Search Student: Suresh Kumar',
       description: 'Search and select the user to assign this asset to',
+      required: true,
+      minLength: 3,
     },
     {
       id: 'reason',
@@ -273,6 +275,7 @@ export const allocationModalConfig = {
         { value: 'repair', label: 'Repair' },
       ],
       placeholder: 'Select reason',
+      required: true,
     },
     {
       id: 'preview',
@@ -306,6 +309,8 @@ export const componentInstallModalConfig = {
       label: 'Select Device',
       placeholder: 'Search: Lenovo T480 / NG-PUNE-L-0210',
       description: 'Find and select the device to install component on',
+      required: true,
+      minLength: 3,
     },
     {
       id: 'slot',
@@ -317,12 +322,14 @@ export const componentInstallModalConfig = {
         { value: 'slot_c', label: 'Slot C' },
       ],
       placeholder: 'Select Slot',
+      required: true,
     },
     {
       id: 'notes',
       type: 'textarea',
       label: 'Notes',
       placeholder: 'Add any additional notes here...',
+      maxLength: 200,
     },
   ],
   actionButtons: [
@@ -353,6 +360,7 @@ export const componentStripModalConfig = {
         { value: 'scrap', label: 'Scrap ▼' },
       ],
       placeholder: 'Select reason',
+      required: true,
     },
     {
       id: 'new_status',
